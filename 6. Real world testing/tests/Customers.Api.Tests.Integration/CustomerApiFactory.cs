@@ -11,7 +11,6 @@ using Npgsql;
 using Respawn;
 using System.Data.Common;
 using System.Net;
-using System.Net.Http.Json;
 using Testcontainers.PostgreSql;
 using Xunit;
 
@@ -21,7 +20,7 @@ public class CustomerApiFactory : WebApplicationFactory<IApiMarker>, IAsyncLifet
 {
     public const string ValidGithubUser = "validuser";
     public const string InvalidGithubUser = "invaliduser";
-    public const string GithubUserCallerHasNoAccessTo = "restricteduser";
+    public const string RateLimitedGithubUser = "ratelimiteduser";
     private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder()
         .WithDatabase("db")
         .WithUsername("course")
@@ -40,7 +39,7 @@ public class CustomerApiFactory : WebApplicationFactory<IApiMarker>, IAsyncLifet
         _gitHubApiServer.Start();
         _gitHubApiServer.SetupUser(ValidGithubUser, HttpStatusCode.OK);
         _gitHubApiServer.SetupUser(InvalidGithubUser, HttpStatusCode.NotFound);
-        _gitHubApiServer.SetupUser(GithubUserCallerHasNoAccessTo, HttpStatusCode.Forbidden);
+        _gitHubApiServer.SetupUser(RateLimitedGithubUser, HttpStatusCode.Forbidden);
 
         // Must be before CreateClient() as CreateClient() will intialize an API instance in memory, therefore call its ConfigureServices method, which requires DB to already be up & running
         await _dbContainer.StartAsync();

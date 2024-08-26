@@ -46,8 +46,9 @@ public class GitHubApiServer : IDisposable
                     ""status"": ""404""
                 }",
             HttpStatusCode.Forbidden => @"{
-                    ""message"": ""Forbidden Error Message""
-                }",
+                ""message"": ""API rate limit exceeded for 127.1.1.0. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"",
+                ""documentation_url"": ""https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting""
+            }",
             _ => $@"{{
                     ""login"": ""{username}"",
                     ""id"": 67104228,

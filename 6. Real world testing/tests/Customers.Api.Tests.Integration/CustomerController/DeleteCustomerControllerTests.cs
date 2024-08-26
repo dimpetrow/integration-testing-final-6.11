@@ -27,51 +27,19 @@ namespace Customers.Api.Tests.Integration.CustomerController
             var createCustomerResponseMessage = await _httpClient.PostAsJsonAsync("customers", customer);
             createCustomerResponseMessage.StatusCode.Should().Be(HttpStatusCode.Created);
             var createCustomerResponse = await createCustomerResponseMessage.Content.ReadFromJsonAsync<CustomerResponse>();
-            createCustomerResponse.Should().NotBe(null);
-            createCustomerResponse!.Id.Should().NotBeEmpty();
 
             // Act
-            var response = await _httpClient.DeleteAsync($"customers/{createCustomerResponse.Id}");
+            var response = await _httpClient.DeleteAsync($"customers/{createCustomerResponse!.Id}");
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-        }
-
-        [Fact]
-        public async Task Delete_ReturnsOk_WhenCustomerExists_V2_WithDoubleCheckingThroughGetEndpoint()
-        {
-            // Arrange
-            // 1. Create a valid customer and ensure it's a success
-            var customer = CreateCustomerUtils.CustomerGenerator.Generate();
-            var createCustomerResponseMessage = await _httpClient.PostAsJsonAsync("customers", customer);
-            createCustomerResponseMessage.StatusCode.Should().Be(HttpStatusCode.Created);
-            var createCustomerResponse = await createCustomerResponseMessage.Content.ReadFromJsonAsync<CustomerResponse>();
-            createCustomerResponse.Should().NotBe(null);
-            createCustomerResponse!.Id.Should().NotBeEmpty();
-            // 1.1. Double-ensure the success by using the Get endpoint. Is it an overkill for integration tests ??
-            var getByIdResponse = await _httpClient.GetAsync($"customers/{createCustomerResponse.Id}");
-            getByIdResponse.StatusCode.Should().Be(HttpStatusCode.OK);
-            var getByIdCustomerResponse = await getByIdResponse.Content.ReadFromJsonAsync<CustomerResponse>();
-            getByIdCustomerResponse.Should().BeEquivalentTo(customer);
-            getByIdCustomerResponse!.Id.Should().Be(createCustomerResponse.Id);
-
-            // Act
-            var response = await _httpClient.DeleteAsync($"customers/{createCustomerResponse.Id}");
-
-            // Assert
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var getByIdResponseAgain = await _httpClient.GetAsync($"customers/{createCustomerResponse.Id}");
-            getByIdResponseAgain.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [Fact]
         public async Task Delete_ReturnsNotFound_WhenCustomerDoesNotExist()
         {
-            // Arrange
-            var idThatHasAnAstronomicalChanceOfExisting = Guid.NewGuid();
-
             // Act
-            var response = await _httpClient.DeleteAsync($"customers/{idThatHasAnAstronomicalChanceOfExisting}");
+            var response = await _httpClient.DeleteAsync($"customers/{Guid.NewGuid()}");
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);

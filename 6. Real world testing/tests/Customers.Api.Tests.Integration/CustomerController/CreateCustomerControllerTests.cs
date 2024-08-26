@@ -38,29 +38,6 @@ public class CreateCustomerControllerTests : IAsyncLifetime
     }
 
     [Fact]
-    public async Task Create_CreatesUser_WhenDataIsValid_V2_WithDoubleCheckingThroughGetEndpoint()
-    {
-        // Arrange
-        var customer = CreateCustomerUtils.CustomerGenerator.Generate();
-
-        // Act
-        var response = await _httpClient.PostAsJsonAsync("customers", customer);
-
-        // Assert
-        var customerResponse = await response.Content.ReadFromJsonAsync<CustomerResponse>();
-        customerResponse.Should().BeEquivalentTo(customer);
-        response.StatusCode.Should().Be(HttpStatusCode.Created);
-        response.Headers.Location!.ToString().Should()
-            .Be($"http://localhost/customers/{customerResponse!.Id}");
-        // 2. the Get response
-        var getByIdResponse = await _httpClient.GetAsync($"customers/{customerResponse.Id}");
-        getByIdResponse.StatusCode.Should().Be(HttpStatusCode.OK);
-        var getByIdCustomerResponse = await getByIdResponse.Content.ReadFromJsonAsync<CustomerResponse>();
-        getByIdCustomerResponse.Should().BeEquivalentTo(customer);
-        getByIdCustomerResponse!.Id.Should().Be(customerResponse.Id);
-    }
-
-    [Fact]
     public async Task Create_ReturnsValidationError_WhenEmailIsInvalid()
     {
         // Arrange

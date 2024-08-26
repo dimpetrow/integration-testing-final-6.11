@@ -43,11 +43,8 @@ namespace Customers.Api.Tests.Integration.CustomerController
         [Fact]
         public async Task GetById_ReturnsNotFound_WhenCustomerDoesNotExist()
         {
-            // Arrange
-            var idThatHasAnAstronomicalChanceOfExisting = Guid.NewGuid();
-
             // Act
-            var response = await _httpClient.GetAsync($"customers/{idThatHasAnAstronomicalChanceOfExisting}");
+            var response = await _httpClient.GetAsync($"customers/{Guid.NewGuid()}");
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
