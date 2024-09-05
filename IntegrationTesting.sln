@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Real world testing", "6. Real world testing", "{8566CB9C-3D01-48D5-BD91-6B8130A9295C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A3398918-64AC-4D6D-BAA5-2C0BAEBA25BA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0CBCB68F-1AD6-433E-9528-6CB0A062C71F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Api", "src\Customers.Api\Customers.Api.csproj", "{0CCD99D4-B680-4BC3-9925-845CB5E06492}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E6479780-F63A-4DF7-BDC3-038F448B0388}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeApi", "src\FakeApi\FakeApi.csproj", "{7B61EC1D-B8F2-4433-A49E-50DAF70AB8C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.Api", "6. Real world testing\src\Customers.Api\Customers.Api.csproj", "{223A7753-0275-4CDC-96DA-4E0A74870A7D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6283557A-060C-480B-916F-9F61E546B605}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers.Api.Tests.Integration", "6. Real world testing\tests\Customers.Api.Tests.Integration\Customers.Api.Tests.Integration.csproj", "{10A4777B-DC60-4FB3-A551-22A4E8CE77FD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeApi", "6. Real world testing\src\FakeApi\FakeApi.csproj", "{84390358-0B60-48FD-9B62-D9EB165D8167}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Api.Tests.Integration", "tests\Customers.Api.Tests.Integration\Customers.Api.Tests.Integration.csproj", "{ED83A012-96D4-4C2D-82E9-5D232132E7E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,27 +19,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{223A7753-0275-4CDC-96DA-4E0A74870A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{223A7753-0275-4CDC-96DA-4E0A74870A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{223A7753-0275-4CDC-96DA-4E0A74870A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{223A7753-0275-4CDC-96DA-4E0A74870A7D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10A4777B-DC60-4FB3-A551-22A4E8CE77FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10A4777B-DC60-4FB3-A551-22A4E8CE77FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10A4777B-DC60-4FB3-A551-22A4E8CE77FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10A4777B-DC60-4FB3-A551-22A4E8CE77FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84390358-0B60-48FD-9B62-D9EB165D8167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84390358-0B60-48FD-9B62-D9EB165D8167}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84390358-0B60-48FD-9B62-D9EB165D8167}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84390358-0B60-48FD-9B62-D9EB165D8167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CCD99D4-B680-4BC3-9925-845CB5E06492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CCD99D4-B680-4BC3-9925-845CB5E06492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CCD99D4-B680-4BC3-9925-845CB5E06492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CCD99D4-B680-4BC3-9925-845CB5E06492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B61EC1D-B8F2-4433-A49E-50DAF70AB8C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B61EC1D-B8F2-4433-A49E-50DAF70AB8C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B61EC1D-B8F2-4433-A49E-50DAF70AB8C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B61EC1D-B8F2-4433-A49E-50DAF70AB8C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED83A012-96D4-4C2D-82E9-5D232132E7E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED83A012-96D4-4C2D-82E9-5D232132E7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED83A012-96D4-4C2D-82E9-5D232132E7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED83A012-96D4-4C2D-82E9-5D232132E7E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0CBCB68F-1AD6-433E-9528-6CB0A062C71F} = {8566CB9C-3D01-48D5-BD91-6B8130A9295C}
-		{E6479780-F63A-4DF7-BDC3-038F448B0388} = {8566CB9C-3D01-48D5-BD91-6B8130A9295C}
-		{223A7753-0275-4CDC-96DA-4E0A74870A7D} = {0CBCB68F-1AD6-433E-9528-6CB0A062C71F}
-		{10A4777B-DC60-4FB3-A551-22A4E8CE77FD} = {E6479780-F63A-4DF7-BDC3-038F448B0388}
-		{84390358-0B60-48FD-9B62-D9EB165D8167} = {0CBCB68F-1AD6-433E-9528-6CB0A062C71F}
+		{0CCD99D4-B680-4BC3-9925-845CB5E06492} = {A3398918-64AC-4D6D-BAA5-2C0BAEBA25BA}
+		{7B61EC1D-B8F2-4433-A49E-50DAF70AB8C7} = {A3398918-64AC-4D6D-BAA5-2C0BAEBA25BA}
+		{ED83A012-96D4-4C2D-82E9-5D232132E7E2} = {6283557A-060C-480B-916F-9F61E546B605}
 	EndGlobalSection
 EndGlobal
