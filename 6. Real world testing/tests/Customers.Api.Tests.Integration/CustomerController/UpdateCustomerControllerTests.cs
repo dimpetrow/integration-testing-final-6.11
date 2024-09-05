@@ -37,38 +37,38 @@ namespace Customers.Api.Tests.Integration.CustomerController
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
-        //[Theory] // TODOCont: Generate invalid requests for each property alone, then each combination of them + verify that API returns validation errors per property
-        public async Task Update_ReturnsBadRequest_WhenRequestIsNotValid()
-        {
-            //// Arrange
-            //// 1. Create a valid customer and ensure it's a success
-            //var customer = CreateCustomerUtils.CustomerGenerator.Generate();
-            //var createCustomerResponseMessage = await _httpClient.PostAsJsonAsync("customers", customer);
-            //createCustomerResponseMessage.StatusCode.Should().Be(HttpStatusCode.Created);
-            //var createCustomerResponse = await createCustomerResponseMessage.Content.ReadFromJsonAsync<CustomerResponse>();
-            //createCustomerResponse.Should().NotBe(null);
-            //createCustomerResponse!.Id.Should().NotBeEmpty();
+        // //[Theory] // TODOCont: Generate invalid requests for each property alone, then each combination of them + verify that API returns validation errors per property
+        // public async Task Update_ReturnsBadRequest_WhenRequestIsNotValid()
+        // {
+        //     //// Arrange
+        //     //// 1. Create a valid customer and ensure it's a success
+        //     //var customer = CreateCustomerUtils.CustomerGenerator.Generate();
+        //     //var createCustomerResponseMessage = await _httpClient.PostAsJsonAsync("customers", customer);
+        //     //createCustomerResponseMessage.StatusCode.Should().Be(HttpStatusCode.Created);
+        //     //var createCustomerResponse = await createCustomerResponseMessage.Content.ReadFromJsonAsync<CustomerResponse>();
+        //     //createCustomerResponse.Should().NotBe(null);
+        //     //createCustomerResponse!.Id.Should().NotBeEmpty();
 
-            //// 2. Prepare an update request
-            //var updateCustomerRequestBody = new CustomerRequest
-            //{
-            //    GitHubUsername = CustomerApiFactory.InvalidGithubUser,
-            //    FullName = customer.FullName,
-            //    DateOfBirth = customer.DateOfBirth,
-            //    Email = customer.Email,
-            //};
+        //     //// 2. Prepare an update request
+        //     //var updateCustomerRequestBody = new CustomerRequest
+        //     //{
+        //     //    GitHubUsername = CustomerApiFactory.InvalidGithubUser,
+        //     //    FullName = customer.FullName,
+        //     //    DateOfBirth = customer.DateOfBirth,
+        //     //    Email = customer.Email,
+        //     //};
 
-            //// Act
-            //var response = await _httpClient.PutAsJsonAsync($"customers/{createCustomerResponse.Id}", updateCustomerRequestBody);
+        //     //// Act
+        //     //var response = await _httpClient.PutAsJsonAsync($"customers/{createCustomerResponse.Id}", updateCustomerRequestBody);
 
-            //// Assert
-            //response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-            //var error = await response.Content.ReadFromJsonAsync<ValidationProblemDetails>();
-            //error!.Status.Should().Be(400);
-            //error.Title.Should().Be("One or more validation errors occurred.");
-            //error.Errors[nameof(CustomerRequest.GitHubUsername)][0]
-            //    .Should().Be($"There is no GitHub user with username {CustomerApiFactory.InvalidGithubUser}");
-        }
+        //     //// Assert
+        //     //response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        //     //var error = await response.Content.ReadFromJsonAsync<ValidationProblemDetails>();
+        //     //error!.Status.Should().Be(400);
+        //     //error.Title.Should().Be("One or more validation errors occurred.");
+        //     //error.Errors[nameof(CustomerRequest.GitHubUsername)][0]
+        //     //    .Should().Be($"There is no GitHub user with username {CustomerApiFactory.InvalidGithubUser}");
+        // }
 
         [Fact]
         public async Task Update_ReturnsBadRequest_WhenGitHubUsernameIsNotValid()
