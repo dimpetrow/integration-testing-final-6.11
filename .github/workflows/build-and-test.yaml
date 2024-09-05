@@ -15,7 +15,7 @@ jobs:
 
       - name: Build and Test
         run: |
-          docker build -t int-test-course -f '.\6. Real world testing\tests\Customers.Api.Tests.Integration\Dockerfile' .
+          docker build -t int-test-course -f 6.\ Real\ world\ testing/tests/Customers.Api.Tests.Integration/Dockerfile .
           docker run -d -v /var/run/docker.sock.raw:/var/run/docker.sock --name int-test-container int-test-course
 
       - name: Cleanup
