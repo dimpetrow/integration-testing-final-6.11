@@ -16,7 +16,7 @@ jobs:
       - name: Build and Test
         run: |
           docker build -t int-test-course -f 6.\ Real\ world\ testing/tests/Customers.Api.Tests.Integration/Dockerfile .
-          docker run -v /var/run/docker.sock.raw:/var/run/docker.sock --name int-test-container int-test-course
+          docker run -v /var/run/docker.sock.raw:/var/run/docker.sock -e TESTCONTAINERS_HOST_OVERRIDE=host.docker.internal --name int-test-container int-test-course
 
       - name: Cleanup
         if: always()
